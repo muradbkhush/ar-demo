@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <title>WebAR تجربة</title>
+    <script src="https://cdn.jsdelivr.net/npm/aframe@1.2.0/dist/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.0/dist/mindar-image-aframe.prod.js"></script>
+    <style>
+      body { margin: 0; overflow: hidden; }
+      video { display: none; } /* نخفي الفيديو الأصلي */
+    </style>
+  </head>
+  <body>
+    <a-scene mindar-image="imageTargetSrc: ./targets.mind; autoStart: true;" 
+             embedded color-space="sRGB" vr-mode-ui="enabled: false"
+             device-orientation-permission-ui="enabled: true">
+
+      <a-camera position="0 0 0" look-controls="false"></a-camera>
+
+      <!-- عند التعرف على الصورة -->
+      <a-entity mindar-image-target="targetIndex: 0">
+        <!-- فيديو يظهر فوق الصورة -->
+        <a-video src="#demoVideo" width="1.5" height="0.8" position="0 0 0"></a-video>
+      </a-entity>
+    </a-scene>
+
+    <!-- الفيديو -->
+    <video id="demoVideo" autoplay loop="true" muted playsinline src="demo.mp4"></video>
+  </body>
+</html>
